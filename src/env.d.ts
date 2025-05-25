@@ -1,0 +1,19 @@
+declare namespace NodeJS {
+  interface ProcessEnv {
+    DISCORD_TOKEN: string;
+    DISCORD_BOT_ID: string;
+    DISCORD_GUILD_ID: string;
+    DEBUG_MODE?: string;
+    DATABASE_URL: string;
+    // Environment variables for Channels
+    REGULATIONS_CHANNEL_ID: string;
+    // Environment variables for Roles
+    REGULATIONS_ACCEPTED_ROLE_ID: string;
+    // Environment variables for Licenses Roles
+    ROOKIE_LICENSE_ROLE_ID: string;
+    CLASS_C_LICENSE_ROLE_ID: string;
+    CLASS_B_LICENSE_ROLE_ID: string;
+    CLASS_A_LICENSE_ROLE_ID: string;
+    CLASS_S_LICENSE_ROLE_ID: string;
+  }
+}

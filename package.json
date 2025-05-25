@@ -1,0 +1,24 @@
+{
+  "name": "discord-bot",
+  "packageManager": "yarn@4.9.1",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "discord.js": "^14.19.3",
+    "i18next": "^25.2.1",
+    "i18next-fs-backend": "^2.6.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/ws": "^8.18.1",
+    "dotenv": "^16.5.0",
+    "prisma": "^6.8.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}

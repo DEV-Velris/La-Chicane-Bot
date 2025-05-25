@@ -1,0 +1,62 @@
+{
+  "globalEmbed": {
+    "color": "0x0D366E"
+  },
+  "ping": {
+    "waiting": "Calculating latency...",
+    "title": "Latencies",
+    "latency": "Commissioner Latency",
+    "apiLatency": "Discord Latency",
+    "imageUrl": "https://imgur.com/iRZq278.png"
+  },
+  "regulations": {
+    "embed": {
+      "title": "🇬🇧 RULES - LA CHICANE",
+      "description": "Please read and follow these rules before participating!\n\n### I ・ GENERAL BEHAVIOR\n> No harassment, threats, or defamation of other members.\n> Discriminatory, racist, hateful or violent speech is strictly prohibited.\n> No posting of offensive, pornographic or violent content.\n\n### II ・ CHANNEL USAGE\n> Stay in the appropriate channel for each topic.\n> No spamming or flooding with unnecessary messages.\n\n### III ・ ADVERTISING & SHARING\n> No unauthorized advertising or suspicious links.\n> Advertising is allowed **only** for **Assetto Corsa Competizione**–related videos and streams.\n\n### IV ・ DISCORD FEATURES\n> No bots or automated scripts without staff approval.\n> Do not share personal or sensitive information.\n> Do not impersonate other members.\n\n### V ・ SANCTIONS\n> Major violation: immediate ban.\n> Minor violation: warning or temporary restriction.\n> Sanction decisions are at staff discretion.\n\n_These rules may be updated at any time._\n\n📘 Also check <#1375940327629656064> and <#1375940367614083223> for more info.",
+      "imageUrl": "https://i.imgur.com/MY3vH8n.png"
+    },
+    "accept-button": {
+      "label": "Sign the Contract"
+    },
+    "accept-message": "You have accepted the contract and are now a {pilote}.",
+    "already-accepted": "You have already accepted the contract and are already a {pilote}."
+  },
+  "pitSkillLink": {
+    "first-step": {
+      "title": "CONNECTION TO PITSKILL.IO ACCOUNT",
+      "description": "This command allows you to **link your Discord account to your PitSkill.io profile**, in order to synchronise your data on the **LA CHICANE** server.\n\nTo get the requested ID :\n`1.` Go to [https://pitskill.io] and log in.\n`2.` Click on your **profile** _(top right)_.\n`3.`Select **\"Referral Program ’**.\n`4.` copy the **link** that appears.\n_Example link: `https://pitskill.io/?ref=abc12345` → your ID is `abc12345`._\n`5.` Click on the button below **\"Link my account ’** to validate your account.\n\n**No access to your account is required, only the link with your ID is used.**",
+      "imageUrl": "https://imgur.com/W4JYTAo.png",
+      "link-button-label": "Link my account",
+      "go-to-button-label": "Go to PitSkill.io"
+    },
+    "second-step": {
+      "modal-title": "CONNECTION TO PITSKILL.IO ACCOUNT",
+      "input-label": "Paste your PitSkill referral link here",
+      "input-placeholder": "Example: https://pitskill.io/?ref=abc12345"
+    },
+    "third-step": {
+      "bad-referral-link": "The id from you referral link is invalid. Please check your link and try again.",
+      "api-error": "An error occurred while trying to request PitSkill.io API. Please try again later.",
+      "found-account": {
+        "already-linked": {
+          "same-account": "This PitSkill account is already linked to your Discord account.",
+          "different-account": "This PitSkill account is already linked to {account}. Please use a different PitSkill ID."
+        },
+        "confirm-liaison": {
+          "title": "PROFILE FOUND ON PITSKILL.IO",
+          "description": "Here is the information associated with the ID provided:\n> <:Pilote:1376225855902187651>・**Driver name**: `{{pilote.name}}` - `{{pilote.shortname}}`\n> <:Drapeau:1376225787438563519>・**Nationality**: `{{pilote.nationnality}}`\n> <:License:1376228721630908428>・**Licence**: `{{pilote.license}}`\n> <:Ratio:1376228436820889713>・**Rating** : `{{pilote.rating}}`\n> <:DateHeure:1376226919569424454>・**Create account**: `{{pilote.accountCreationDate}}`\n\nIs this your profile?\nClick below with **\"Validate\"** to confirm, or **\"This is not me\"** to cancel the link.",
+          "imageUrl": "https://imgur.com/W4JYTAo.png",
+          "confirm-button-label": "Validate",
+          "cancel-button-label": "This is not me"
+        }
+      },
+      "not-found-account": "No PitSkill account found with this ID. Please check your link and try again."
+    },
+    "fourth-step": {
+      "no-pending": "No pending link requests.",
+      "cancelled": "The link request has been cancelled.",
+      "database-error": "An error occurred while trying to save your PitSkill ID in the database. Please try again later. If the problem persists, contact the staff.",
+      "success": "Your PitSkill.io account has been successfully linked to your Discord account! The role <@&{{roleId}}> has been assigned to you."
+    }
+  }
+}
