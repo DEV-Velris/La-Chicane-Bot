@@ -10,7 +10,7 @@ import { SlashCommand } from "./types";
 import { join } from "path";
 import { readdirSync } from "fs";
 import { initI18n } from "./i18n";
-import { PrismaClient } from "./generated/prisma";
+import { PrismaClient } from "../generated/prisma";
 import "./schedulers/pitSkillRolesChecker";
 
 configDotenv();

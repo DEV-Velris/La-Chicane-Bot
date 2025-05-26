@@ -30,7 +30,7 @@ logs/
 coverage/
 
 # Ignore prisma client
-/src/generated/prisma
+/generated/prisma
 
 # Ignore db_data
 db_data/
