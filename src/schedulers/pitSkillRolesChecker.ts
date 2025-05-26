@@ -18,6 +18,10 @@ setInterval(async () => {
   });
 
   usersToCheck.forEach(async (user) => {
+    if (process.env.DISCORD_GUILD_ID === undefined) {
+      console.error("DISCORD_GUILD_ID is not set in environment variables.");
+      return;
+    }
     const discordUser = discordClient.guilds.cache
       .get(process.env.DISCORD_GUILD_ID)
       ?.members.cache.get(user.discordId);
