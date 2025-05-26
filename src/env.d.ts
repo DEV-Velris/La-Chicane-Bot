@@ -15,5 +15,16 @@ declare namespace NodeJS {
     CLASS_B_LICENSE_ROLE_ID: string;
     CLASS_A_LICENSE_ROLE_ID: string;
     CLASS_S_LICENSE_ROLE_ID: string;
+    // Discord Roles for Levels
+    PROVISIONAL_LEVEL_ROLE_ID: string;
+    AM_LEVEL_ROLE_ID: string;
+    COPPER_LEVEL_ROLE_ID: string;
+    BRONZE_LEVEL_ROLE_ID: string;
+    STEEL_LEVEL_ROLE_ID: string;
+    SILVER_LEVEL_ROLE_ID: string;
+    PLATINUM_LEVEL_ROLE_ID: string;
+    VETERAN_LEVEL_ROLE_ID: string;
+    PRO_LEVEL_ROLE_ID: string;
+    ELITE_LEVEL_ROLE_ID: string;
   }
 }

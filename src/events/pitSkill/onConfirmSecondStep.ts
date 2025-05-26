@@ -9,6 +9,7 @@ import {
 import { BotEvent } from "../../types";
 import i18next from "i18next";
 import { GetPrismaClient, pendingPitSkillRegistrations } from "../..";
+import { GetPitskillDriverInfoResponse } from "../../types/api";
 
 const event: BotEvent = {
   name: Events.InteractionCreate,
@@ -64,7 +65,8 @@ const event: BotEvent = {
         return;
       }
 
-      const pitSkillData = await pitSkillApiResponse.json();
+      const pitSkillData =
+        (await pitSkillApiResponse.json()) as GetPitskillDriverInfoResponse;
       // If the account is not found
       if (pitSkillData.status !== 1) {
         await interaction.reply({
@@ -129,8 +131,11 @@ const event: BotEvent = {
       ]);
 
       pendingPitSkillRegistrations.set(interaction.user.id, {
-        rating: pitSkillData.payload.tpc_driver_data.currentPitSkill,
         pitSkillId: idFromReferralLink,
+        pitSkill: pitSkillData.payload.tpc_driver_data.currentPitSkill,
+        pitRep: pitSkillData.payload.tpc_driver_data.currentPitRep,
+        licenseClassLevel:
+          pitSkillData.payload.tpc_driver_data.licence_class_level,
       });
 
       await interaction.reply({

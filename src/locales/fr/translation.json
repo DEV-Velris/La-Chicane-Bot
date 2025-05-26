@@ -56,7 +56,12 @@
       "no-pending": "Aucune demande de liaison en attente.",
       "cancelled": "La demande de liaison a été annulée.",
       "database-error": "Une erreur s'est produite lors de l'enregistrement de votre ID PitSkill dans la base de données. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
-      "success": "Votre compte PitSkill.io a été lié avec succès à votre compte Discord ! Le rôle <@&{{roleId}}> vous a été attribué."
+      "roles-calculation-error": "Une erreur s'est produite lors du calcul des rôles à attribuer. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
+      "fetch-member-error": "Une erreur s'est produite lors de la récupération de vos informations discord. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
+      "role-add-error": "Une erreur s'est produite lors de l'attribution des rôles. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
+      "unexpected-error": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
+      "success": "Votre compte PitSkill.io a été lié avec succès à votre compte Discord ! Les rôles <@&{{licenseRoleId}}> et <@&{{levelRoleId}}> vous a été attribué.",
+      "cancellation-confirmation": "La liaison a été annulée avec succès."
     }
   }
 }

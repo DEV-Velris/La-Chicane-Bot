@@ -11,6 +11,7 @@ import { join } from "path";
 import { readdirSync } from "fs";
 import { initI18n } from "./i18n";
 import { PrismaClient } from "./generated/prisma";
+import "./schedulers/pitSkillRolesChecker";
 
 configDotenv();
 
@@ -54,7 +55,12 @@ export const discordClient = new Client({
 
 export const pendingPitSkillRegistrations: Map<
   string,
-  { rating: number; pitSkillId: number }
+  {
+    pitSkillId: number;
+    pitSkill: number;
+    pitRep: number;
+    licenseClassLevel: number;
+  }
 > = new Map();
 
 (async () => {

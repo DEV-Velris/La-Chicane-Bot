@@ -56,7 +56,12 @@
       "no-pending": "No pending link requests.",
       "cancelled": "The link request has been cancelled.",
       "database-error": "An error occurred while trying to save your PitSkill ID in the database. Please try again later. If the problem persists, contact the staff.",
-      "success": "Your PitSkill.io account has been successfully linked to your Discord account! The role <@&{{roleId}}> has been assigned to you."
+      "roles-calculation-error": "An error occurred while calculating the roles to assign. Please try again later. If the problem persists, contact the staff.",
+      "fetch-member-error": "An error occurred while trying to fetch your Discord information. Please try again later. If the problem persists, contact the staff.",
+      "role-add-error": "An error occurred while trying to assign the roles. Please try again later. If the problem persists, contact the staff.",
+      "unexpected-error": "An unexpected error occurred. Please try again later. If the problem persists, contact the staff.",
+      "success": "Your PitSkill.io account has been successfully linked to your Discord account! The roles <@&{{licenseRoleId}}> and <@&{{levelRoleId}}> have been assigned to you.",
+      "cancellation-confirmation": "The link has been successfully cancelled."
     }
   }
 }
