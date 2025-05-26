@@ -18,4 +18,8 @@ model User {
   id         Int    @id @default(autoincrement()) @db.Integer
   discordId  String @db.VarChar(50)
   pitSkillId Int
+
+  @@unique([discordId, pitSkillId], name: "uq_user_discord_id_pit_skill_id")
+  @@index([discordId], name: "idx_user_discord_id")
+  @@index([pitSkillId], name: "idx_user_pit_skill_id")
 }
