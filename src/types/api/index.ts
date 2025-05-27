@@ -1,1 +1,1 @@
-export { GetPitskillDriverInfoResponse } from "./getPitskillDriverInfo";
+export { GetPitskillDriverInfoResponse } from './getPitskillDriverInfo';

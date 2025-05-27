@@ -17,7 +17,7 @@ datasource db {
 model User {
   id         Int    @id @default(autoincrement()) @db.Integer
   discordId  String @db.VarChar(50)
-  pitSkillId Int
+  pitSkillId Int?
 
   @@unique([discordId, pitSkillId], name: "uq_user_discord_id_pit_skill_id")
   @@index([discordId], name: "idx_user_discord_id")

@@ -1,34 +1,26 @@
-import { Events, Interaction, MessageFlags } from "discord.js";
-import { BotEvent } from "../../../types";
-import { GetPrismaClient, pendingPitSkillRegistrations } from "../../..";
-import i18next from "i18next";
-import { GetPitSkillDiscordRoles } from "../../../utils";
+import { Events, Interaction, MessageFlags } from 'discord.js';
+import { BotEvent } from '../../../types';
+import { GetPrismaClient, pendingPitSkillRegistrations } from '../../..';
+import i18next from 'i18next';
+import { GetPitSkillDiscordRoles } from '../../../utils';
+import { flag } from 'country-emoji';
 
 const event: BotEvent = {
   name: Events.InteractionCreate,
   once: false,
   async execute(interaction: Interaction): Promise<void> {
-    if (
-      !interaction.isButton() ||
-      interaction.customId !== "confirm_pitskill_link"
-    )
-      return;
+    if (!interaction.isButton() || interaction.customId !== 'confirm_pitskill_link') return;
 
-    const locale = interaction.locale.startsWith("fr") ? "fr" : "en";
+    const locale = interaction.locale.startsWith('fr') ? 'fr' : 'en';
     const fourthStepTranslation = (key: string) =>
       i18next.t(`pitSkillLink.fourth-step.${key}`, { lng: locale });
 
     try {
-      const pitSkillData = pendingPitSkillRegistrations.get(
-        interaction.user.id
-      );
+      const pitSkillData = pendingPitSkillRegistrations.get(interaction.user.id);
 
-      if (
-        !pendingPitSkillRegistrations.has(interaction.user.id) ||
-        !pitSkillData
-      ) {
+      if (!pendingPitSkillRegistrations.has(interaction.user.id) || !pitSkillData) {
         await interaction.reply({
-          content: fourthStepTranslation("no-pending"),
+          content: fourthStepTranslation('no-pending'),
           flags: MessageFlags.Ephemeral,
         });
         return;
@@ -47,7 +39,7 @@ const event: BotEvent = {
       // If the user could not be created in the database
       if (!createdUser) {
         await interaction.reply({
-          content: fourthStepTranslation("database-error"),
+          content: fourthStepTranslation('database-error'),
           flags: MessageFlags.Ephemeral,
         });
         return;
@@ -58,30 +50,45 @@ const event: BotEvent = {
 
       if (rolesToAdd.length < 2) {
         await interaction.reply({
-          content: fourthStepTranslation("roles-calculation-error"),
+          content: fourthStepTranslation('roles-calculation-error'),
           flags: MessageFlags.Ephemeral,
         });
         return;
       }
 
       // Add the roles to the user
-      const member = await interaction.guild?.members.fetch(
-        interaction.user.id
-      );
+      const member = await interaction.guild?.members.fetch(interaction.user.id);
       if (!member) {
         await interaction.reply({
-          content: fourthStepTranslation("fetch-member-error"),
+          content: fourthStepTranslation('fetch-member-error'),
           flags: MessageFlags.Ephemeral,
         });
         return;
       }
 
       try {
-        await member.roles.add(rolesToAdd, "PitSkill link roles");
+        await member.roles.add(rolesToAdd, 'PitSkill link roles');
       } catch (error) {
-        console.error("Error adding roles:", error);
+        console.error('Error adding roles:', error);
         await interaction.reply({
-          content: fourthStepTranslation("role-add-error"),
+          content: fourthStepTranslation('role-add-error'),
+          flags: MessageFlags.Ephemeral,
+        });
+        return;
+      }
+
+      // Rename the user in the server
+      const flagEmoji = flag(pitSkillData.driverCountry);
+      const rename = `[${flagEmoji}] ${pitSkillData.firstName} ${pitSkillData.lastName} (${pitSkillData.shortName})`;
+
+      try {
+        if (member.manageable) {
+          await member.setNickname(rename, 'PitSkill link rename');
+        }
+      } catch (error) {
+        console.error('Error renaming member:', error);
+        await interaction.reply({
+          content: fourthStepTranslation('rename-error'),
           flags: MessageFlags.Ephemeral,
         });
         return;
@@ -92,7 +99,7 @@ const event: BotEvent = {
 
       // Reply to the user
       await interaction.reply({
-        content: i18next.t("pitSkillLink.fourth-step.success", {
+        content: i18next.t('pitSkillLink.fourth-step.success', {
           lng: locale,
           licenseRoleId: rolesToAdd[0],
           levelRoleId: rolesToAdd[1],
@@ -101,9 +108,11 @@ const event: BotEvent = {
       });
     } catch (error) {
       await interaction.reply({
-        content: fourthStepTranslation("unexpected-error"),
+        content: fourthStepTranslation('unexpected-error'),
         flags: MessageFlags.Ephemeral,
       });
+
+      console.error('Error in confirm_pitskill_link interaction:', error);
     }
   },
 };

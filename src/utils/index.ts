@@ -1,1 +1,1 @@
-export { GetPitSkillDiscordRoles } from "./pitSkillUtil";
+export { GetPitSkillDiscordRoles } from './pitSkillUtil';
