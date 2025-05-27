@@ -118,3 +118,31 @@ export function GetPitSkillDiscordRoles(discordId: string): string[] {
 
   return rolesId;
 }
+
+export function GetPitSkillLevelShortName(pitSkillLevelRoleId: string): string {
+  switch (pitSkillLevelRoleId) {
+    case process.env.PROVISIONAL_LEVEL_ROLE_ID:
+      return 'PRV';
+    case process.env.AM_LEVEL_ROLE_ID:
+      return 'AM';
+    case process.env.COPPER_LEVEL_ROLE_ID:
+      return 'CPR';
+    case process.env.BRONZE_LEVEL_ROLE_ID:
+      return 'BRZ';
+    case process.env.STEEL_LEVEL_ROLE_ID:
+      return 'STL';
+    case process.env.SILVER_LEVEL_ROLE_ID:
+      return 'SLV';
+    case process.env.PLATINUM_LEVEL_ROLE_ID:
+      return 'PLT';
+    case process.env.VETERAN_LEVEL_ROLE_ID:
+      return 'VET';
+    case process.env.PRO_LEVEL_ROLE_ID:
+      return 'Pro';
+    case process.env.ELITE_LEVEL_ROLE_ID:
+      return 'ELT';
+    default:
+      console.warn(`Unknown pit skill level role ID: ${pitSkillLevelRoleId}`);
+      return '';
+  }
+}

@@ -5,6 +5,7 @@ import i18next from 'i18next';
 import { GetPitSkillDiscordRoles } from '../../../utils';
 import { flag } from 'country-emoji';
 import { User as DatabaseUser } from '../../../../generated/prisma';
+import { GetPitSkillLevelShortName } from '../../../utils/pitSkillUtil';
 
 const event: BotEvent = {
   name: Events.InteractionCreate,
@@ -98,7 +99,8 @@ const event: BotEvent = {
 
       // Rename the user in the server
       const flagEmoji = flag(pitSkillData.driverCountry);
-      const rename = `[${flagEmoji}] ${pitSkillData.firstName} ${pitSkillData.lastName} (${pitSkillData.shortName})`;
+      const pitSkillLevelShortname = GetPitSkillLevelShortName(rolesToAdd[1]);
+      const rename = `[${flagEmoji}] ${pitSkillData.firstName} ${pitSkillData.lastName} (${pitSkillLevelShortname})`;
 
       try {
         if (member.manageable) {
