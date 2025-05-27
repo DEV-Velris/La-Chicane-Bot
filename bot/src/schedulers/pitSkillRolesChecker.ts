@@ -13,6 +13,11 @@ setInterval(
     const prismaClient = await GetPrismaClient();
 
     const usersToCheck = await prismaClient.user.findMany({
+      where: {
+        pitSkillId: {
+          not: null,
+        },
+      },
       select: {
         discordId: true,
         pitSkillId: true,
