@@ -63,6 +63,14 @@
       "unexpected-error": "An unexpected error occurred. Please try again later. If the problem persists, contact the staff.",
       "success": "Your PitSkill.io account has been successfully linked to your Discord account! The roles <@&{{licenseRoleId}}> and <@&{{levelRoleId}}> have been assigned to you.",
       "cancellation-confirmation": "The link has been successfully cancelled."
+    },
+    "unlink": {
+      "error": "An error occurred while trying to unlink your PitSkill account. Please try again later. If the problem persists, contact the staff.",
+      "no-linked-account": "You have no linked PitSkill account.",
+      "success": "Your PitSkill account has been successfully unlinked from your Discord account. Ranking roles have been removed. You can relink your account at any time."
     }
+  },
+  "errors": {
+    "no-discord-linked-account": "You doesn't have a linked Discord account."
   }
 }

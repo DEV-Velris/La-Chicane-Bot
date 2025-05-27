@@ -4,6 +4,7 @@ import { GetPrismaClient, pendingPitSkillRegistrations } from '../../..';
 import i18next from 'i18next';
 import { GetPitSkillDiscordRoles } from '../../../utils';
 import { flag } from 'country-emoji';
+import { User as DatabaseUser } from '../../../../generated/prisma';
 
 const event: BotEvent = {
   name: Events.InteractionCreate,
@@ -28,13 +29,31 @@ const event: BotEvent = {
 
       const prismaClient = await GetPrismaClient();
 
-      // If the account is not linked, we link it
-      const createdUser = await prismaClient.user.create({
-        data: {
+      const userExist = await prismaClient.user.findUnique({
+        where: {
           discordId: interaction.user.id,
-          pitSkillId: pitSkillData?.pitSkillId,
         },
       });
+
+      let createdUser: DatabaseUser | null = null;
+
+      if (!userExist) {
+        createdUser = await prismaClient.user.create({
+          data: {
+            discordId: interaction.user.id,
+            pitSkillId: pitSkillData?.pitSkillId,
+          },
+        });
+      } else {
+        createdUser = await prismaClient.user.update({
+          where: {
+            discordId: interaction.user.id,
+          },
+          data: {
+            pitSkillId: pitSkillData?.pitSkillId,
+          },
+        });
+      }
 
       // If the user could not be created in the database
       if (!createdUser) {

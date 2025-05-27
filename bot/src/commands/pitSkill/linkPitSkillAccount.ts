@@ -13,7 +13,6 @@ export const command: SlashCommand = {
   name: 'link-pitskill-account',
   data: new SlashCommandBuilder()
     .setName('link-pitskill-account')
-
     .setDescription('Links your PitSkill account to your Discord account.')
     .setNameLocalizations({
       fr: 'lier-compte-pitskill',

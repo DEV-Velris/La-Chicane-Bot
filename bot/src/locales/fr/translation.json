@@ -63,6 +63,14 @@
       "unexpected-error": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
       "success": "Votre compte PitSkill.io a été lié avec succès à votre compte Discord ! Les rôles <@&{{licenseRoleId}}> et <@&{{levelRoleId}}> vous a été attribué.",
       "cancellation-confirmation": "La liaison a été annulée avec succès."
+    },
+    "unlink": {
+      "error": "Une erreur s'est produite lors de la tentative de dissociation de votre compte PitSkill. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
+      "no-linked-account": "Vous n'avez pas de compte PitSkill lié.",
+      "success": "Votre compte PitSkill a été dissocié avec succès de votre compte Discord ! Les rôles de licence et de niveau ont été retirés. Vous pouvez relier un compte quand vous le souhaitez."
     }
+  },
+  "errors": {
+    "no-discord-linked-account": "Vous n'avez pas de compte Discord lié."
   }
 }

@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import { Client, REST, Routes, Snowflake } from 'discord.js';
 import { readdirSync, Stats, statSync } from 'fs';
 import { join } from 'path';
 
 const registerCommands = async (client: Client, commandsDir: string): Promise<void> => {
-  const body: object[] = [];
+  const body: any = [];
 
   const readCommands = (dir: string): void => {
     const files: string[] = readdirSync(dir);
@@ -15,22 +18,19 @@ const registerCommands = async (client: Client, commandsDir: string): Promise<vo
       if (stat.isDirectory()) {
         readCommands(filePath);
       } else if (file.endsWith('.ts') || file.endsWith('.js')) {
-        (async () => {
-          try {
-            const imported = await import(filePath);
-            const command = imported.command;
-            if (!command) return;
-            body.push(command.data.toJSON());
-            client.commands.set(command.name, command);
-            if (process.env.DEBUG_MODE === 'true') {
-              console.log(`Commande ${command.name} chargée`);
-            }
-          } catch (err) {
-            if (process.env.DEBUG_MODE === 'true') {
-              console.error(`Erreur lors du chargement de la commande ${filePath}:`, err);
-            }
+        try {
+          const command = require(filePath).command;
+          if (!command) return;
+          body.push(command.data.toJSON());
+          client.commands.set(command.name, command);
+          if (process.env.DEBUG_MODE === 'true') {
+            console.log(`Commande ${command.name} chargée`);
           }
-        })();
+        } catch (err) {
+          if (process.env.DEBUG_MODE === 'true') {
+            console.error(`Erreur lors du chargement de la commande ${filePath}:`, err);
+          }
+        }
       }
     }
   };
