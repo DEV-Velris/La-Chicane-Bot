@@ -73,6 +73,19 @@
       "success": "Votre compte PitSkill a été dissocié avec succès de votre compte Discord ! Les rôles de licence et de niveau ont été retirés. Vous pouvez relier un compte quand vous le souhaitez."
     }
   },
+  "report-ticket": {
+    "embed": {
+      "title": "FAIRE UN SIGNALEMENT",
+      "description": "*Tu as été témoin ou victime d’un comportement inapproprié en piste ou en dehors ?**\nCrée un ticket pour que l’équipe de modération puisse examiner la situation.\n\n**Clique sur le bouton ci-dessous pour ouvrir un ticket privé avec le staff.**\n→ *Tous les tickets sont traités en toute confidentialité.*",
+      "imageUrl": "https://imgur.com/j3Q5gw1.png"
+    },
+    "submit-button": {
+      "label": "Ouvrir un ticket de signalement"
+    },
+    "ask-french-report-button": {
+      "label": "Voir le message en français"
+    }
+  },
   "errors": {
     "no-discord-linked-account": "Vous n'avez pas de compte Discord lié."
   }

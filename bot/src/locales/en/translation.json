@@ -73,6 +73,19 @@
       "success": "Your PitSkill account has been successfully unlinked from your Discord account. Ranking roles have been removed. You can relink your account at any time."
     }
   },
+  "report-ticket": {
+    "embed": {
+      "title": "OPEN A REPORT TICKET",
+      "description": "**Have you witnessed or experienced inappropriate behavior on or off track?**\nOpen a ticket so our moderation team can review the situation.\n\n**Click the button below to open a private ticket with the staff.**\n→ *All tickets are handled confidentially.*",
+      "imageUrl": "https://imgur.com/uxmSASG.png"
+    },
+    "submit-button": {
+      "label": "Open a report ticket"
+    },
+    "ask-french-report-button": {
+      "label": "View the message in French"
+    }
+  },
   "errors": {
     "no-discord-linked-account": "You doesn't have a linked Discord account."
   }
