@@ -1,4 +1,11 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, Events, Interaction, MessageFlags } from 'discord.js';
+import {
+  ActionRowBuilder,
+  ButtonBuilder,
+  ButtonStyle,
+  Events,
+  Interaction,
+  MessageFlags,
+} from 'discord.js';
 import { BotEvent } from '../../types';
 import i18next from 'i18next';
 
@@ -20,7 +27,7 @@ const event: BotEvent = {
         .setLabel(frenchTranslation('accept-button.label'))
         .setStyle(ButtonStyle.Success);
 
-        const buttonRow = new ActionRowBuilder<ButtonBuilder>().addComponents(frenchAcceptButton);
+      const buttonRow = new ActionRowBuilder<ButtonBuilder>().addComponents(frenchAcceptButton);
 
       await interaction.reply({
         embeds: [

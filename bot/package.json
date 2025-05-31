@@ -4,7 +4,8 @@
   "scripts": {
     "build": "tsc && copyfiles -u 1 src/locales/**/*.json dist/",
     "start": "node dist/index.js",
-    "dev": "ts-node src/index.ts"
+    "dev": "ts-node src/index.ts",
+    "prettier": "npx yarn exec prettier . --write"
   },
   "dependencies": {
     "@prisma/client": "^6.8.2",
