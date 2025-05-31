@@ -38,20 +38,11 @@ export const command: SlashCommand = {
     }
 
     try {
-      const globalFrenchEmbedColor = i18next.t('globalEmbed.color', {
-        lng: 'fr',
-      });
       const globalEnglishEmbedColor = i18next.t('globalEmbed.color', {
         lng: 'en',
       });
       const frenchTranslation = (key: string) => i18next.t(`regulations.${key}`, { lng: 'fr' });
       const englishTranslation = (key: string) => i18next.t(`regulations.${key}`, { lng: 'en' });
-
-      const frenchAcceptButton = new ButtonBuilder()
-        .setCustomId('accept_regulations_fr')
-        .setEmoji('🇫🇷')
-        .setLabel(frenchTranslation('accept-button.label'))
-        .setStyle(ButtonStyle.Success);
 
       const englishAcceptButton = new ButtonBuilder()
         .setCustomId('accept_regulations_en')
@@ -59,21 +50,19 @@ export const command: SlashCommand = {
         .setLabel(englishTranslation('accept-button.label'))
         .setStyle(ButtonStyle.Success);
 
+      const askFrenchRegulations = new ButtonBuilder()
+        .setCustomId('ask_french_regulations')
+        .setEmoji('🇫🇷')
+        .setLabel(frenchTranslation('ask-french-regulations-button.label'))
+        .setStyle(ButtonStyle.Secondary);
+
       const buttonRow = new ActionRowBuilder<ButtonBuilder>().addComponents([
-        frenchAcceptButton,
         englishAcceptButton,
+        askFrenchRegulations,
       ]);
 
       await interaction.channel.send({
         embeds: [
-          {
-            title: frenchTranslation('embed.title'),
-            description: frenchTranslation('embed.description'),
-            color: Number(globalFrenchEmbedColor),
-            image: {
-              url: frenchTranslation('embed.imageUrl'),
-            },
-          },
           {
             title: englishTranslation('embed.title'),
             description: englishTranslation('embed.description'),
