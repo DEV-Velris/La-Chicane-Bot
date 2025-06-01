@@ -1,14 +1,22 @@
-# Step 1
+# Step 1: Build
 FROM node:22.16.0-alpine AS build
 WORKDIR /app
 COPY ./bot/ .
 
-RUN yarn install --frozen-lockfile
+# Active Corepack et installe Yarn 4
+RUN corepack enable && corepack prepare yarn@4.9.1 --activate
+
+# Utilise le bon Yarn pour installer et build
+RUN yarn install --immutable
 RUN yarn build
 
-# Step 2
+# Step 2: Runtime
 FROM node:22.16.0-alpine
 WORKDIR /app
 COPY --from=build /app /app
-RUN yarn install --production --frozen-lockfile
+
+RUN corepack enable && corepack prepare yarn@4.9.1 --activate
+RUN yarn install --production --immutable
+
+# Applique les migrations Prisma avant de lancer le bot
 CMD [ "sh", "-c", "npx prisma migrate deploy && node dist/index.js" ]
