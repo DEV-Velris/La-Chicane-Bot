@@ -16,7 +16,7 @@ WORKDIR /app
 COPY --from=build /app /app
 
 RUN corepack enable && corepack prepare yarn@4.9.1 --activate
-RUN yarn install --production --immutable
+RUN yarn install --immutable
 
 # Applique les migrations Prisma avant de lancer le bot
 CMD [ "sh", "-c", "npx prisma migrate deploy && node dist/index.js" ]
