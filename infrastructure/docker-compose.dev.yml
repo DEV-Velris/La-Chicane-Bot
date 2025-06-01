@@ -1,0 +1,23 @@
+services:
+  bot:
+    build:
+      context: ../bot
+    env_file:
+      - ../.env
+    volumes:
+      - ../bot:/app
+    depends_on:
+      - database
+    command: yarn dev
+    restart: unless-stopped
+  
+  database:
+    image: postgres:17.5
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: chicane
+    ports:
+      - '5432:5432'
+    tmpfs:
+      - /var/lib/postgresql/data

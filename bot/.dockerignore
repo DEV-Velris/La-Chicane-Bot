@@ -1,0 +1,12 @@
+node_modules
+dist
+.env
+.env.local
+
+*.log
+.DS_Store
+*.swp
+
+.yarn/cache
+.yarn/install-state.gz
+.pnp.*

@@ -1,5 +1,7 @@
 {
   "name": "discord-bot",
+  "version": "alpha-0.1.0",
+  "description": "A Discord bot for managing La Chicane server.",
   "packageManager": "yarn@4.9.1",
   "scripts": {
     "build": "tsc && copyfiles -u 1 src/locales/**/*.json dist/",

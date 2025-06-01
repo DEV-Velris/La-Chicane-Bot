@@ -1,0 +1,14 @@
+# Step 1
+FROM node:22.16.0-alpine AS build
+WORKDIR /app
+COPY . .
+
+RUN yarn install --frozen-lockfile
+RUN yarn build
+
+# Step 2
+FROM node:22.16.0-alpine
+WORKDIR /app
+COPY --from=build /app /app
+RUN yarn install --production --frozen-lockfile
+CMD [ "sh", "-c", "npx prisma migrate deploy && node dist/index.js" ]
