@@ -13,6 +13,7 @@ services:
   
   database:
     image: postgres:17.5
+    container_name: la-chicane-bot-database
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
