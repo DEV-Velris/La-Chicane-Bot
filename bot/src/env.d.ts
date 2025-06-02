@@ -7,6 +7,7 @@ declare namespace NodeJS {
     DATABASE_URL: string;
     // Environment variables for Channels
     REGULATIONS_CHANNEL_ID: string;
+    BOT_COMMANDS_CHANNEL_ID: string;
     // Environment variables for Roles
     REGULATIONS_ACCEPTED_ROLE_ID: string;
     // Environment variables for Licenses Roles
@@ -26,5 +27,7 @@ declare namespace NodeJS {
     VETERAN_LEVEL_ROLE_ID: string;
     PRO_LEVEL_ROLE_ID: string;
     ELITE_LEVEL_ROLE_ID: string;
+    // Environment variables for Tickets
+    TICKETS_CATEGORY_ID: string;
   }
 }

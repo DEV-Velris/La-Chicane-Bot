@@ -71,6 +71,9 @@
       "error": "An error occurred while trying to unlink your PitSkill account. Please try again later. If the problem persists, contact the staff.",
       "no-linked-account": "You have no linked PitSkill account.",
       "success": "Your PitSkill account has been successfully unlinked from your Discord account. Ranking roles have been removed. You can relink your account at any time."
+    },
+    "account-details": {
+      "not-linked": "User <@{{userId}}> has no linked PitSkill account."
     }
   },
   "report-ticket": {
@@ -84,7 +87,8 @@
     },
     "ask-french-report-button": {
       "label": "View the message in French"
-    }
+    },
+    "category-not-found": "The report ticket category was not found. Please contact the staff."
   },
   "errors": {
     "no-discord-linked-account": "You doesn't have a linked Discord account."
