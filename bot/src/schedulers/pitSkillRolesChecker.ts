@@ -2,7 +2,7 @@ import { flag } from 'country-emoji';
 import { discordClient, GetPrismaClient } from '..';
 import { GetPitskillDriverInfoResponse } from '../types/api';
 import { GetPitSkillDiscordRoles } from '../utils';
-import { GetPitSkillLevelShortName } from '../utils/pitSkillUtil';
+import { GetPitSkillLevelName } from '../utils/pitSkillUtil';
 
 setInterval(
   async () => {
@@ -144,7 +144,10 @@ setInterval(
 
       // Check for name changes
       const flagEmoji = flag(pitSkillData.payload.sigma_user_data.profile_data.driverCountry);
-      const pitSkillLevelShortname = GetPitSkillLevelShortName(rolesToAdd[1]);
+      const pitSkillLevelShortname = GetPitSkillLevelName(
+        pitSkillData.payload.tpc_driver_data.currentPitRep,
+        pitSkillData.payload.tpc_driver_data.currentPitSkill,
+      );
       const rename = `[${flagEmoji}] ${pitSkillData.payload.sigma_user_data.profile_data.first_name} ${pitSkillData.payload.sigma_user_data.profile_data.last_name} (${pitSkillLevelShortname})`;
 
       if (discordUser.nickname !== rename) {

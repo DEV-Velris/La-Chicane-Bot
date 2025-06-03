@@ -4,6 +4,9 @@ import { join } from 'path';
 
 export async function initI18n() {
   await i18next.use(FsBackend).init<FsBackendOptions>({
+    interpolation: {
+      escapeValue: false,
+    },
     lng: 'fr',
     fallbackLng: 'fr',
     preload: ['en', 'fr'],

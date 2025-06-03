@@ -16,6 +16,15 @@ const event: BotEvent = {
       });
       const translation = (key: string) => i18next.t(`report-ticket.${key}`, { lng: locale });
 
+      if (process.env.TICKETS_CATEGORY_ID === undefined) {
+        console.error('TICKETS_CATEGORY_ID is not set in environment variables.');
+        await interaction.reply({
+          content: translation('category-not-found'),
+          flags: MessageFlags.Ephemeral,
+        });
+        return;
+      }
+
       // Create the report ticket channel
       const reportTicketCategory = interaction.guild?.channels.cache.get(
         process.env.TICKETS_CATEGORY_ID,

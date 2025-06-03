@@ -27,7 +27,7 @@
   "pitSkillLink": {
     "first-step": {
       "title": "LIAISON AU COMPTE PITSKILL.IO",
-      "description": "Cette commande te permet de **lier ton compte Discord à ton profil PitSkill.io**, pour synchroniser tes données sur le serveur **LA CHICANE**.\n\nPour récupérer l’ID demandée :\n`1.` Va sur [https://pitskill.io](https://pitskill.io) et connecte-toi.\n`2.` Clique sur ton **profil** _(en haut à droite)_.\n`3.` Sélectionne **\"Referral Program\"**.\n`4.` Copie le **lien** qui s’affiche.\n_Exemple de lien : `https://pitskill.io/?ref=abc12345` → ton ID est `abc12345`._\n`5.` Clique sur le bouton ci-dessous **\"Lier mon compte\"** pour valider ton compte.\n\n**Aucun accès à ton compte n’est requis, seule la liaison avec ton ID est utilisée.**",
+      "description": "Cette commande te permet de **lier ton compte Discord à ton profil PitSkill.io**, pour synchroniser tes données sur le serveur **LA CHICANE**.\n\nPour récupérer l’ID demandée :\n`1.` Va sur [pitskill.io](https://pitskill.io) et connecte-toi.\n`2.` Clique sur ton **profil** _(en haut à droite)_.\n`3.` Sélectionne **\"Referral Program\"**.\n`4.` Copie le **lien** qui s’affiche.\n_Exemple de lien : `https://pitskill.io/?ref=abc12345` → ton ID est `abc12345`._\n`5.` Clique sur le bouton ci-dessous **\"Lier mon compte\"** pour valider ton compte.\n\n**Aucun accès à ton compte n’est requis, seule la liaison avec ton ID est utilisée.**",
       "imageUrl": "https://imgur.com/c1bdLeA.png",
       "link-button-label": "Lier mon compte",
       "go-to-button-label": "Aller sur PitSkill.io"
@@ -71,6 +71,14 @@
       "error": "Une erreur s'est produite lors de la tentative de dissociation de votre compte PitSkill. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff.",
       "no-linked-account": "Vous n'avez pas de compte PitSkill lié.",
       "success": "Votre compte PitSkill a été dissocié avec succès de votre compte Discord ! Les rôles de licence et de niveau ont été retirés. Vous pouvez relier un compte quand vous le souhaitez."
+    },
+    "account-details": {
+      "not-linked": "L'utilisateur <@{{userId}}> n'a pas de compte PitSkill lié.",
+      "embed": {
+        "title": "COMPTE DU PILOTE",
+        "description": "<:Pilote:1376225855902187651>・**Pilote:** `{{pilot.firstName}} {{pilot.lastName}}`\n<:Drapeau:1376225787438563519>・**Nationalité:** `{{pilot.nationality}}`\n<:LumiRank:1379358434163429437>・**LumiRank:** `{{pilot.lumiRank}}`\n<:Number:1379358489578569748>・**Numéro:** `{{pilot.carNumber}}`\n\n{{pilot.rankEmoji}}・**Niveau:** `{{pilot.rank}} | {{pilot.pitRep}} / {{pilot.pitSkill}}` \n{{pilot.classEmoji}}・**Classe:** `{{pilot.licenseClass}}`",
+        "imageUrl": "https://imgur.com/rameOgT.png"
+      }
     }
   },
   "report-ticket": {
