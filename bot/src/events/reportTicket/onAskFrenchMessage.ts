@@ -31,7 +31,7 @@ const event: BotEvent = {
 
       await interaction.reply({
         embeds: [
-            {
+          {
             title: frenchTranslation('embed.title'),
             description: frenchTranslation('embed.description'),
             color: Number(globalFrenchEmbedColor),

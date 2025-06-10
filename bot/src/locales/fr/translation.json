@@ -76,8 +76,10 @@
       "not-linked": "L'utilisateur <@{{userId}}> n'a pas de compte PitSkill lié.",
       "embed": {
         "title": "COMPTE DU PILOTE",
-        "description": "<:Pilote:1376225855902187651>・**Pilote:** `{{pilot.firstName}} {{pilot.lastName}}`\n<:Drapeau:1376225787438563519>・**Nationalité:** `{{pilot.nationality}}`\n<:LumiRank:1379358434163429437>・**LumiRank:** `{{pilot.lumiRank}}`\n<:Number:1379358489578569748>・**Numéro:** `{{pilot.carNumber}}`\n\n{{pilot.rankEmoji}}・**Niveau:** `{{pilot.rank}} | {{pilot.pitRep}} / {{pilot.pitSkill}}` \n{{pilot.classEmoji}}・**Classe:** `{{pilot.licenseClass}}`",
-        "imageUrl": "https://imgur.com/rameOgT.png"
+        "description": "<:Pilote:1376225855902187651>・**Pilote:** `{{pilot.firstName}} {{pilot.lastName}}`\n<:Drapeau:1376225787438563519>・**Nationalité:** `{{pilot.nationality}}`\n<:LumiRank:1379358434163429437>・**LumiRank:** `{{pilot.lumiRank}}`\n<:Number:1379358489578569748>・**Numéro:** `{{pilot.carNumber}}`\n\n{{pilot.rankEmoji}}・**Niveau:** `{{pilot.rank}} | {{pilot.pitRep}} / {{pilot.pitSkill}}` \n{{pilot.classEmoji}}・**Classe:** `{{pilot.licenseClass}}`\n\n<:Prev:1382099281183375530>・ **Dernière Course:** {{pilot.lastRaceRender}}\n<:Next:1382099258907557969>・ **Prochaine Course:** {{pilot.nextRaceRender}}",
+        "imageUrl": "https://imgur.com/rameOgT.png",
+        "no-race-before": "`Ce pilote n'a pas encore participé à une course.`",
+        "no-race-scheduled": "`Pas de course prévue.`"
       }
     }
   },

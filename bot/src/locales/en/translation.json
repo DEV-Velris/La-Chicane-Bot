@@ -76,8 +76,10 @@
       "not-linked": "User <@{{userId}}> has no linked PitSkill account.",
       "embed": {
         "title": "DRIVER ACCOUNT",
-        "description": "<:Pilote:1376225855902187651>・**Driver:** `{{pilot.firstName}} {{pilot.lastName}}`\n<:Drapeau:1376225787438563519>・**Nationality:** `{{pilot.nationality}}`\n<:LumiRank:1379358434163429437>・**LumiRank:** `{{pilot.lumiRank}}`\n<:Number:1379358489578569748>・**Number:** `{{pilot.carNumber}}`\n\n{{pilot.rankEmoji}}・**Rank:** `{{pilot.rank}} | {{pilot.pitRep}} / {{pilot.pitSkill}}` \n{{pilot.classEmoji}}・**Class:** `{{pilot.licenseClass}}`",
-        "imageUrl": "https://imgur.com/rameOgT.png"
+        "description": "<:Pilote:1376225855902187651>・**Driver:** `{{pilot.firstName}} {{pilot.lastName}}`\n<:Drapeau:1376225787438563519>・**Nationality:** `{{pilot.nationality}}`\n<:LumiRank:1379358434163429437>・**LumiRank:** `{{pilot.lumiRank}}`\n<:Number:1379358489578569748>・**Number:** `{{pilot.carNumber}}`\n\n{{pilot.rankEmoji}}・**Rank:** `{{pilot.rank}} | {{pilot.pitRep}} / {{pilot.pitSkill}}` \n{{pilot.classEmoji}}・**Class:** `{{pilot.licenseClass}}`\n\n<:Prev:1382099281183375530>・ **Last Race:** {{pilot.lastRaceRender}}\n<:Next:1382099258907557969>・ **Next Race:** {{pilot.nextRaceRender}}",
+        "imageUrl": "https://imgur.com/rameOgT.png",
+        "no-race-before": "`This driver has not yet competed in a race.`",
+        "no-race-scheduled": "`No race scheduled.`"
       }
     }
   },

@@ -131,6 +131,8 @@ type PitSkillAccountDetailsCommand = {
   licenseClass: string;
   rankEmoji: string;
   classEmoji: string;
+  lastRaceRender: string;
+  nextRaceRender: string;
 };
 
 /**
@@ -143,6 +145,8 @@ async function getDriverEmbedInformations(
   pitSkillAccountId: number,
   interaction: CommandInteraction,
 ): Promise<PitSkillAccountDetailsCommand | undefined> {
+  const locale = interaction.locale.startsWith('fr') ? 'fr' : 'en-GB';
+
   // Request to the PitSkill API to get driver information
   const pitSkillDriverInformationsResponse = await fetch(
     `https://api.pitskill.io/api/pitskill/getdriverinfo?id=${pitSkillAccountId}`,
@@ -154,10 +158,52 @@ async function getDriverEmbedInformations(
     },
   );
 
+  // #region Latest Race Request
+
+  // Request configuration for the latest Race results
+  const latestRaceUrl = new URL('https://api.pitskill.io/api/event-results');
+  latestRaceUrl.searchParams.set('limit', '1');
+  latestRaceUrl.searchParams.set('page', '1');
+  latestRaceUrl.searchParams.set('query', '');
+  latestRaceUrl.searchParams.set('daterange', 'all');
+  latestRaceUrl.searchParams.set('sort', 'date');
+  latestRaceUrl.searchParams.set('scope', 'driver');
+  latestRaceUrl.searchParams.set('event_type', 'all');
+  latestRaceUrl.searchParams.set('target_driver', pitSkillAccountId.toString());
+  latestRaceUrl.searchParams.set('game_id', '1');
+
+  const pitSkillLatestRaceResponse = await fetch(latestRaceUrl.toString(), {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // #endregion
+
+  // #region Next Race Request
+  const nextRaceUrl = new URL('https://api.pitskill.io/api/events/upcomingRegistrations');
+  nextRaceUrl.searchParams.set('id', pitSkillAccountId.toString());
+
+  const pitSkillNextRaceResponse = await fetch(nextRaceUrl.toString(), {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  // #endregion
+
   // If the API response is not OK
-  if (pitSkillDriverInformationsResponse.status !== 200) {
+  if (
+    pitSkillDriverInformationsResponse.status !== 200 ||
+    pitSkillLatestRaceResponse.status !== 200 ||
+    pitSkillNextRaceResponse.status !== 200
+  ) {
     await interaction.reply({
-      content: i18next.t('pitSkillLink.third-step.api-error'),
+      content: i18next.t('pitSkillLink.third-step.api-error', {
+        lng: locale,
+      }),
       flags: MessageFlags.Ephemeral,
     });
     return;
@@ -167,10 +213,15 @@ async function getDriverEmbedInformations(
   const pitSkillDriverInformations =
     (await pitSkillDriverInformationsResponse.json()) as GetPitskillDriverInfoResponse;
 
+  const pitSkillLatestRace = await pitSkillLatestRaceResponse.json();
+  const pitSkillNextRace = await pitSkillNextRaceResponse.json();
+
   // If the account is not found
   if (pitSkillDriverInformations.status !== 1) {
     await interaction.reply({
-      content: i18next.t('pitSkillLink.third-step.not-found-account'),
+      content: i18next.t('pitSkillLink.third-step.not-found-account', {
+        lng: locale,
+      }),
       flags: MessageFlags.Ephemeral,
     });
     return;
@@ -211,5 +262,18 @@ async function getDriverEmbedInformations(
     licenseClass: pitSkillDriverInformations.payload.tpc_driver_data.licence_class,
     rankEmoji: driverLevelEmoji,
     classEmoji: driverClassEmoji,
+    lastRaceRender: pitSkillLatestRace.payload.results?.filter(
+      (race: { game: number }) => race.game === 1,
+    )[0].event_id
+      ? `[\`${pitSkillLatestRace.payload.results?.filter((race: { game: number }) => race.game === 1)[0].event_name}\`](https://pitskill.io/event/${pitSkillLatestRace.payload.results?.filter((race: { game: number }) => race.game === 1)[0].event_id})`
+      : i18next.t('pitSkillLink.account-details.embed.no-race-before', {
+          lng: locale,
+        }),
+    nextRaceRender: pitSkillNextRace.payload?.filter((race: { game: number }) => race.game === 1)[0]
+      .event_id
+      ? `[\`${pitSkillNextRace.payload?.filter((race: { game: number }) => race.game === 1)[0].event_name}\`](https://pitskill.io/event/${pitSkillNextRace.payload.filter((race: { game: number }) => race.game === 1)[0].event_id})`
+      : i18next.t('pitSkillLink.account-details.embed.no-race-scheduled', {
+          lng: locale,
+        }),
   };
 }
