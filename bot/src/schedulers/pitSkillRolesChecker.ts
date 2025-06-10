@@ -69,7 +69,11 @@ setInterval(
 
       const userRoles = discordUser.roles.cache.map((role) => role.id);
 
-      const rolesToAdd = GetPitSkillDiscordRoles(user.discordId);
+      const rolesToAdd = GetPitSkillDiscordRoles(
+        pitSkillData.payload.tpc_driver_data.licence_class_level,
+        pitSkillData.payload.tpc_driver_data.currentPitRep,
+        pitSkillData.payload.tpc_driver_data.currentPitSkill,
+      );
 
       // Check for License Class Level changes
       if (userRoles.some((roleId) => rolesToAdd[0].includes(roleId))) {

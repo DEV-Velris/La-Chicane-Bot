@@ -1,20 +1,18 @@
-import { pendingPitSkillRegistrations } from '..';
-
-//TODO: A Refaire en fonction du pit skill & pit rep en direct. (Problème pour scheduler)
 /**
- * Utility function to get Discord roles based on a Discord ID.
- * @param discordId {string} - The Discord ID of the user.
- * @returns {string[]} - An array of role IDs associated with the Discord user.
+ * Utility functions for managing pilot pit skills and roles in a Discord bot.
+ * @param pilotLicenseClass The pilot's license class.
+ * @param pilotPitRep The pilot's pit reputation.
+ * @param pilotPitSkill The pilot's pit skill.
+ * @returns {string[]} An array of Discord role IDs corresponding to the pilot's pit skill level.
  */
-export function GetPitSkillDiscordRoles(discordId: string): string[] {
+export function GetPitSkillDiscordRoles(
+  pilotLicenseClass: number,
+  pilotPitRep: number,
+  pilotPitSkill: number,
+): string[] {
   const rolesId: string[] = [];
-  const pilotData = pendingPitSkillRegistrations.get(discordId);
 
-  if (pilotData === undefined) {
-    return rolesId;
-  }
-
-  switch (pilotData.licenseClassLevel) {
+  switch (pilotLicenseClass) {
     case 1: // Rookie
       if (process.env.ROOKIE_LICENSE_ROLE_ID) {
         rolesId.push(process.env.ROOKIE_LICENSE_ROLE_ID);
@@ -51,59 +49,59 @@ export function GetPitSkillDiscordRoles(discordId: string): string[] {
       }
       break;
     default:
-      console.warn(`Unknown license class level: ${pilotData.licenseClassLevel}`);
+      console.warn(`Unknown license class level: ${pilotLicenseClass}`);
       break;
   }
 
-  if (pilotData.pitRep >= 20 && pilotData.pitSkill >= 4500) {
+  if (pilotPitRep >= 20 && pilotPitSkill >= 4500) {
     if (process.env.ELITE_LEVEL_ROLE_ID) {
       rolesId.push(process.env.ELITE_LEVEL_ROLE_ID);
     } else {
       console.warn('Elite level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 20 && pilotData.pitSkill >= 3500) {
+  } else if (pilotPitRep >= 20 && pilotPitSkill >= 3500) {
     if (process.env.PRO_LEVEL_ROLE_ID) {
       rolesId.push(process.env.PRO_LEVEL_ROLE_ID);
     } else {
       console.warn('Pro level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 15 && pilotData.pitSkill >= 3000) {
+  } else if (pilotPitRep >= 15 && pilotPitSkill >= 3000) {
     if (process.env.VETERAN_LEVEL_ROLE_ID) {
       rolesId.push(process.env.VETERAN_LEVEL_ROLE_ID);
     } else {
       console.warn('Veteran level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 15 && pilotData.pitSkill >= 2500) {
+  } else if (pilotPitRep >= 15 && pilotPitSkill >= 2500) {
     if (process.env.PLATINUM_LEVEL_ROLE_ID) {
       rolesId.push(process.env.PLATINUM_LEVEL_ROLE_ID);
     } else {
       console.warn('Platinum level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 10 && pilotData.pitSkill >= 2000) {
+  } else if (pilotPitRep >= 10 && pilotPitSkill >= 2000) {
     if (process.env.SILVER_LEVEL_ROLE_ID) {
       rolesId.push(process.env.SILVER_LEVEL_ROLE_ID);
     } else {
       console.warn('Silver level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 10 && pilotData.pitSkill >= 1750) {
+  } else if (pilotPitRep >= 10 && pilotPitSkill >= 1750) {
     if (process.env.STEEL_LEVEL_ROLE_ID) {
       rolesId.push(process.env.STEEL_LEVEL_ROLE_ID);
     } else {
       console.warn('Steel level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 5 && pilotData.pitSkill >= 1500) {
+  } else if (pilotPitRep >= 5 && pilotPitSkill >= 1500) {
     if (process.env.BRONZE_LEVEL_ROLE_ID) {
       rolesId.push(process.env.BRONZE_LEVEL_ROLE_ID);
     } else {
       console.warn('Bronze level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 5 && pilotData.pitSkill >= 1000) {
+  } else if (pilotPitRep >= 5 && pilotPitSkill >= 1000) {
     if (process.env.COPPER_LEVEL_ROLE_ID) {
       rolesId.push(process.env.COPPER_LEVEL_ROLE_ID);
     } else {
       console.warn('Copper level role ID is not set in environment variables.');
     }
-  } else if (pilotData.pitRep >= 5 && pilotData.pitSkill >= 0) {
+  } else if (pilotPitRep >= 5 && pilotPitSkill >= 0) {
     if (process.env.AM_LEVEL_ROLE_ID) {
       rolesId.push(process.env.AM_LEVEL_ROLE_ID);
     } else {

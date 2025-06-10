@@ -66,7 +66,11 @@ const event: BotEvent = {
       }
 
       // Get the license and class role ID based on the pilot's rating
-      const rolesToAdd = GetPitSkillDiscordRoles(interaction.user.id);
+      const rolesToAdd = GetPitSkillDiscordRoles(
+        pitSkillData.licenseClassLevel,
+        pitSkillData.pitRep,
+        pitSkillData.pitSkill,
+      );
 
       if (rolesToAdd.length < 2) {
         await interaction.reply({
