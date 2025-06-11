@@ -8,7 +8,13 @@ import { PrismaClient } from '../generated/prisma';
 import './schedulers/pitSkillRolesChecker';
 import { PitSkillRegistration } from './types/pitSkillRegistration';
 
-configDotenv();
+configDotenv({
+  path: '../.env',
+});
+
+configDotenv({
+  path: '../stack.env',
+});
 
 const prismaClient = new PrismaClient();
 prismaClient.$connect().catch((error) => {

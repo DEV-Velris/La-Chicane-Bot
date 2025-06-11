@@ -5,7 +5,7 @@ import i18next from 'i18next';
 import { GetPitSkillDiscordRoles } from '../../../utils';
 import { flag } from 'country-emoji';
 import { User as DatabaseUser } from '../../../../generated/prisma';
-import { GetPitSkillLevelShortName } from '../../../utils/pitSkillUtil';
+import { GetPitSkillLevelName } from '../../../utils/pitSkillUtil';
 
 const event: BotEvent = {
   name: Events.InteractionCreate,
@@ -66,7 +66,11 @@ const event: BotEvent = {
       }
 
       // Get the license and class role ID based on the pilot's rating
-      const rolesToAdd = GetPitSkillDiscordRoles(interaction.user.id);
+      const rolesToAdd = GetPitSkillDiscordRoles(
+        pitSkillData.licenseClassLevel,
+        pitSkillData.pitRep,
+        pitSkillData.pitSkill,
+      );
 
       if (rolesToAdd.length < 2) {
         await interaction.reply({
@@ -99,7 +103,10 @@ const event: BotEvent = {
 
       // Rename the user in the server
       const flagEmoji = flag(pitSkillData.driverCountry);
-      const pitSkillLevelShortname = GetPitSkillLevelShortName(rolesToAdd[1]);
+      const pitSkillLevelShortname = GetPitSkillLevelName(
+        pitSkillData.pitRep,
+        pitSkillData.pitSkill,
+      );
       const rename = `[${flagEmoji}] ${pitSkillData.firstName} ${pitSkillData.lastName} (${pitSkillLevelShortname})`;
 
       try {

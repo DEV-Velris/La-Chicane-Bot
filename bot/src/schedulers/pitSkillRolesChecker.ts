@@ -2,7 +2,7 @@ import { flag } from 'country-emoji';
 import { discordClient, GetPrismaClient } from '..';
 import { GetPitskillDriverInfoResponse } from '../types/api';
 import { GetPitSkillDiscordRoles } from '../utils';
-import { GetPitSkillLevelShortName } from '../utils/pitSkillUtil';
+import { GetPitSkillLevelName } from '../utils/pitSkillUtil';
 
 setInterval(
   async () => {
@@ -69,7 +69,11 @@ setInterval(
 
       const userRoles = discordUser.roles.cache.map((role) => role.id);
 
-      const rolesToAdd = GetPitSkillDiscordRoles(user.discordId);
+      const rolesToAdd = GetPitSkillDiscordRoles(
+        pitSkillData.payload.tpc_driver_data.licence_class_level,
+        pitSkillData.payload.tpc_driver_data.currentPitRep,
+        pitSkillData.payload.tpc_driver_data.currentPitSkill,
+      );
 
       // Check for License Class Level changes
       if (userRoles.some((roleId) => rolesToAdd[0].includes(roleId))) {
@@ -144,7 +148,10 @@ setInterval(
 
       // Check for name changes
       const flagEmoji = flag(pitSkillData.payload.sigma_user_data.profile_data.driverCountry);
-      const pitSkillLevelShortname = GetPitSkillLevelShortName(rolesToAdd[1]);
+      const pitSkillLevelShortname = GetPitSkillLevelName(
+        pitSkillData.payload.tpc_driver_data.currentPitRep,
+        pitSkillData.payload.tpc_driver_data.currentPitSkill,
+      );
       const rename = `[${flagEmoji}] ${pitSkillData.payload.sigma_user_data.profile_data.first_name} ${pitSkillData.payload.sigma_user_data.profile_data.last_name} (${pitSkillLevelShortname})`;
 
       if (discordUser.nickname !== rename) {
@@ -158,5 +165,5 @@ setInterval(
       }
     });
   },
-  60 * 60 * 1000,
+  12 * 60 * 60 * 1000,
 ); // every hour
