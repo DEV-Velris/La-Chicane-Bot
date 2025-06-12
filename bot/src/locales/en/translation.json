@@ -7,13 +7,13 @@
     "title": "Latencies",
     "latency": "Commissioner Latency",
     "apiLatency": "Discord Latency",
-    "imageUrl": "https://imgur.com/iRZq278.png"
+    "imageUrl": "https://i.imgur.com/zG4rOL3.png"
   },
   "regulations": {
     "embed": {
       "title": "🇬🇧 RULES - LA CHICANE",
       "description": "Please read and follow these rules before participating!\n\n### I ・ GENERAL BEHAVIOR\n> No harassment, threats, or defamation of other members.\n> Discriminatory, racist, hateful or violent speech is strictly prohibited.\n> No posting of offensive, pornographic or violent content.\n\n### II ・ CHANNEL USAGE\n> Stay in the appropriate channel for each topic.\n> No spamming or flooding with unnecessary messages.\n\n### III ・ ADVERTISING & SHARING\n> No unauthorized advertising or suspicious links.\n> Advertising is allowed **only** for **Assetto Corsa Competizione**–related videos and streams.\n\n### IV ・ DISCORD FEATURES\n> No bots or automated scripts without staff approval.\n> Do not share personal or sensitive information.\n> Do not impersonate other members.\n\n### V ・ SANCTIONS\n> Major violation: immediate ban.\n> Minor violation: warning or temporary restriction.\n> Sanction decisions are at staff discretion.\n\n_These rules may be updated at any time._\n\n📘 Also check <#1375940327629656064> and <#1375940367614083223> for more info.",
-      "imageUrl": "https://i.imgur.com/MY3vH8n.png"
+      "imageUrl": "https://i.imgur.com/xVEfz3H.png"
     },
     "ask-french-regulations-button": {
       "label": "View the rules in French"
@@ -28,7 +28,7 @@
     "first-step": {
       "title": "CONNECTION TO PITSKILL.IO ACCOUNT",
       "description": "This command allows you to **link your Discord account to your PitSkill.io profile**, in order to synchronise your data on the **LA CHICANE** server.\n\nTo get the requested ID :\n`1.` Go to [pitskill.io](https://pitskill.io) and log in.\n`2.` Click on your **profile** _(top right)_.\n`3.`Select **\"Referral Program ’**.\n`4.` copy the **link** that appears.\n_Example link: `https://pitskill.io/?ref=abc12345` → your ID is `abc12345`._\n`5.` Click on the button below **\"Link my account ’** to validate your account.\n\n**No access to your account is required, only the link with your ID is used.**",
-      "imageUrl": "https://imgur.com/W4JYTAo.png",
+      "imageUrl": "https://i.imgur.com/nvROAh7.png",
       "link-button-label": "Link my account",
       "go-to-button-label": "Go to PitSkill.io"
     },
@@ -48,7 +48,7 @@
         "confirm-liaison": {
           "title": "PROFILE FOUND ON PITSKILL.IO",
           "description": "Here is the information associated with the ID provided:\n> <:Pilote:1376225855902187651>・**Driver name**: `{{pilote.name}}` - `{{pilote.shortname}}`\n> <:Drapeau:1376225787438563519>・**Nationality**: `{{pilote.nationnality}}`\n> <:License:1376228721630908428>・**Licence**: `{{pilote.license}}`\n> <:Ratio:1376228436820889713>・**Rating** : `{{pilote.rating}}`\n> <:DateHeure:1376226919569424454>・**Create account**: `{{pilote.accountCreationDate}}`\n\nIs this your profile?\nClick below with **\"Validate\"** to confirm, or **\"This is not me\"** to cancel the link.",
-          "imageUrl": "https://imgur.com/W4JYTAo.png",
+          "imageUrl": "https://i.imgur.com/nvROAh7.png",
           "confirm-button-label": "Validate",
           "cancel-button-label": "This is not me"
         }

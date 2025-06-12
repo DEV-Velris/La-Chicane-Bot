@@ -7,13 +7,13 @@
     "title": "Latences",
     "latency": "Latence du Commissaire",
     "apiLatency": "Latence de Discord",
-    "imageUrl": "https://imgur.com/dozLy0M.png"
+    "imageUrl": "https://i.imgur.com/zG4rOL3.png"
   },
   "regulations": {
     "embed": {
       "title": "🇫🇷 RÈGLEMENT - LA CHICANE",
       "description": "Merci de lire et respecter ces règles avant toute participation !\n\n### I ・ COMPORTEMENT GÉNÉRAL\n> Il est interdit de harceler, menacer ou diffamer d'autres membres.\n> Les propos discriminatoires, racistes, haineux ou violents sont strictement interdits.\n> Il est interdit de publier du contenu offensant, pornographique ou violent.\n\n### II ・ UTILISATION DES CANAUX\n> Restez dans le canal approprié pour chaque sujet.\n> Pas de spam ou de flood de messages inutiles. \n\n### III ・ PUBLICITÉ & PARTAGE DE CONTENU\n> Pas de publicité non autorisée ni de liens douteux.\n> La pub est autorisée **uniquement** pour les vidéos ou streams **concernant Assetto Corsa Competizione**.\n\n### IV ・ FONCTIONNALITÉS DISCORD\n> Pas d'utilisation de bots ou scripts automatisés sans autorisation du staff.\n> Ne partagez pas d’informations personnelles ou sensibles.\n> Ne falsifiez pas votre identité ou celle d’un autre membre.\n\n### V ・ SANCTIONS\n> Violation grave : exclusion immédiate.\n> Violation mineure : avertissement ou restriction temporaire.\n> Les décisions sont à la discrétion de l’équipe staff.\n\n_Ce règlement peut être mis à jour à tout moment._\n\n📘 Pensez aussi à consulter <#1375940327629656064> et <#1375940367614083223> pour plus d’informations.",
-      "imageUrl": "https://i.imgur.com/2PaD2ND.png"
+      "imageUrl": "https://i.imgur.com/xVEfz3H.png"
     },
     "ask-french-regulations-button": {
       "label": "Voir le règlement en français"
@@ -28,7 +28,7 @@
     "first-step": {
       "title": "LIAISON AU COMPTE PITSKILL.IO",
       "description": "Cette commande te permet de **lier ton compte Discord à ton profil PitSkill.io**, pour synchroniser tes données sur le serveur **LA CHICANE**.\n\nPour récupérer l’ID demandée :\n`1.` Va sur [pitskill.io](https://pitskill.io) et connecte-toi.\n`2.` Clique sur ton **profil** _(en haut à droite)_.\n`3.` Sélectionne **\"Referral Program\"**.\n`4.` Copie le **lien** qui s’affiche.\n_Exemple de lien : `https://pitskill.io/?ref=abc12345` → ton ID est `abc12345`._\n`5.` Clique sur le bouton ci-dessous **\"Lier mon compte\"** pour valider ton compte.\n\n**Aucun accès à ton compte n’est requis, seule la liaison avec ton ID est utilisée.**",
-      "imageUrl": "https://imgur.com/c1bdLeA.png",
+      "imageUrl": "https://i.imgur.com/nvROAh7.png",
       "link-button-label": "Lier mon compte",
       "go-to-button-label": "Aller sur PitSkill.io"
     },
@@ -48,7 +48,7 @@
         "confirm-liaison": {
           "title": "PROFIL TROUVÉ SUR PITSKILL.IO",
           "description": "Voici les informations associées à l'ID fourni :\n> <:Pilote:1376225855902187651>・**Nom du pilote** : `{{pilote.name}}` - `{{pilote.shortname}}`\n> <:Drapeau:1376225787438563519>・**Nationalité** : `{{pilote.nationnality}}`\n> <:License:1376228721630908428>・**Licence** : `{{pilote.license}}`\n> <:Ratio:1376228436820889713>・**Rating** : `{{pilote.rating}}`\n> <:DateHeure:1376226919569424454>・**Création du compte** : `{{pilote.accountCreationDate}}`\n\nEst-ce bien ton profil ?\nClique ci-dessous avec **\"Valider\"** pour confirmer, ou **\"Ce n'est pas moi\"** pour annuler la liaison.",
-          "imageUrl": "https://i.imgur.com/c1bdLeA.png",
+          "imageUrl": "https://i.imgur.com/nvROAh7.png",
           "confirm-button-label": "Valider",
           "cancel-button-label": "Ce n'est pas moi"
         }

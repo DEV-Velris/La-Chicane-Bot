@@ -1,6 +1,8 @@
 # Step 1: Build
 FROM node:22.16.0-alpine AS build
 WORKDIR /app
+# Update npm to the good version
+RUN npm install -g npm@11.4.2
 COPY ./bot/ .
 
 # Active Corepack et installe Yarn 4
