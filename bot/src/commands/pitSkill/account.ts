@@ -262,15 +262,15 @@ async function getDriverEmbedInformations(
     licenseClass: pitSkillDriverInformations.payload.tpc_driver_data.licence_class,
     rankEmoji: driverLevelEmoji,
     classEmoji: driverClassEmoji,
-    lastRaceRender: pitSkillLatestRace.payload.results?.filter(
+    lastRaceRender: pitSkillLatestRace.payload.results.filter(
       (race: { game: number }) => race.game === 1,
-    )[0].event_id
+    )[0]?.event_id
       ? `[\`${pitSkillLatestRace.payload.results?.filter((race: { game: number }) => race.game === 1)[0].event_name}\`](https://pitskill.io/event/${pitSkillLatestRace.payload.results?.filter((race: { game: number }) => race.game === 1)[0].event_id})`
       : i18next.t('pitSkillLink.account-details.embed.no-race-before', {
           lng: locale,
         }),
     nextRaceRender: pitSkillNextRace.payload?.filter((race: { game: number }) => race.game === 1)[0]
-      .event_id
+      ?.event_id
       ? `[\`${pitSkillNextRace.payload?.filter((race: { game: number }) => race.game === 1)[0].event_name}\`](https://pitskill.io/event/${pitSkillNextRace.payload.filter((race: { game: number }) => race.game === 1)[0].event_id})`
       : i18next.t('pitSkillLink.account-details.embed.no-race-scheduled', {
           lng: locale,
