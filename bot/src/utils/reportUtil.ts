@@ -1,8 +1,8 @@
 import { GetPrismaClient } from '..';
 import { LanguageCode } from '../../generated/prisma';
-import { ReportReason } from '../types/report';
+import { ViolationOption } from '../types/report';
 
-let reportViolationsCache: ReportReason[] = [];
+let reportViolationsCache: ViolationOption[] = [];
 
 export async function loadViolations(): Promise<void> {
   const prisma = await GetPrismaClient();
@@ -16,25 +16,35 @@ export async function loadViolations(): Promise<void> {
         },
       },
     },
+    orderBy: [
+      {
+        category: {
+          code: 'asc',
+        },
+      },
+      {
+        code: 'asc',
+      },
+    ],
   });
 
   reportViolationsCache = violations.map((violation) => {
-    const fr =
+    const frenchDescription =
       violation.description.translations.find((t) => t.language === LanguageCode.FR)?.value ?? '';
-    const en =
+    const englishDescription =
       violation.description.translations.find((t) => t.language === LanguageCode.EN)?.value ?? '';
 
     return {
       code: `V. ${violation.category.code}.${violation.code}`,
       description: {
-        french: fr,
-        english: en,
+        french: frenchDescription,
+        english: englishDescription,
       },
       value: `violation-${violation.id}`,
     };
   });
 }
 
-export function getReportViolations(): ReportReason[] {
+export function getReportViolations(): ViolationOption[] {
   return reportViolationsCache;
 }

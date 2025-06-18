@@ -98,30 +98,37 @@
     "category-not-found": "La catégorie de ticket de signalement n'a pas été trouvée. Veuillez contacter le staff."
   },
   "errors": {
-    "no-discord-linked-account": "Vous n'avez pas de compte Discord lié."
+    "no-discord-linked-account": "Vous n'avez pas de compte Discord lié.",
+    "general-error": "Une erreur s'est produite. Veuillez réessayer plus tard. Si le problème persiste, contactez le staff."
   },
   "administration": {
-    "infraction-category": {
+    "violation-category": {
       "add": {
         "modal": {
           "title": "Créer une nouvelle catégorie d'infraction",
           "code-input": {
-            "label": "Code de la catégorie",
+            "label": "Code de la catégorie (en chiffres)",
             "placeholder": "Exemple: 0"
           },
           "french-meaning-input": {
-            "label": "Signification de la catégorie",
+            "label": "Signification de la catégorie (en français)",
             "placeholder": "Exemple: Comportement injuste | Gêne mineure"
           },
           "english-meaning-input": {
-            "label": "Meaning of the category",
-            "placeholder": "Example: Unfair behavior | Minor inconvenience"
+            "label": "Signification de la catégorie (en Englais)",
+            "placeholder": "Exemple: Unfair behavior | Minor inconvenience"
           },
           "emoji-input": {
             "label": "Emoji de la catégorie",
             "placeholder": "Exemple: 🔵"
           }
-        }
+        },
+        "errors": {
+          "invalid-code": "Le code de la catégorie doit être un nombre ! Celui que vous avez entré n'est pas valide.",
+          "invalid-field": "Le champ {{field}} est invalide. Veuillez vérifier votre saisie.",
+          "code-already-exists": "Une catégorie avec ce code existe déjà. Veuillez choisir un autre code."
+        },
+        "success": "La catégorie d'infraction `VC.{{code}}` a été créée avec succès !"
       }
     }
   }

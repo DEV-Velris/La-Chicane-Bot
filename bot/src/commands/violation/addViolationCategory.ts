@@ -9,37 +9,29 @@ import {
   TextInputBuilder,
   TextInputStyle,
 } from 'discord.js';
-import { SlashCommand } from '../../../types';
+import { SlashCommand } from '../../types';
 import i18next from 'i18next';
 
 export const command: SlashCommand = {
-  name: 'add-infraction-category',
+  name: 'add-violation-category',
   data: new SlashCommandBuilder()
-    .setName('add-infraction-category')
-    .setDescription('Add a new infraction category.')
+    .setName('add-violation-category')
+    .setDescription('Add a new violation category.')
     .setNameLocalizations({
       fr: 'ajouter-categorie-infraction',
-      'en-GB': 'add-infraction-category',
+      'en-GB': 'add-violation-category',
     })
     .setDescriptionLocalizations({
       fr: "Ajouter une nouvelle catégorie d'infraction.",
-      'en-GB': 'Add a new infraction category.',
+      'en-GB': 'Add a new violation category.',
     })
     .setContexts(InteractionContextType.Guild)
     .setDefaultMemberPermissions(PermissionsBitField.Flags.Administrator),
   async execute(interaction: CommandInteraction): Promise<void> {
-    if (!interaction.isChatInputCommand() || !interaction.inGuild()) {
-      await interaction.reply({
-        content: 'This command can only be used as a chat input command in a guild.',
-        flags: MessageFlags.Ephemeral,
-      });
-      return;
-    }
-
     try {
       const locale = interaction.locale.startsWith('fr') ? 'fr' : 'en';
       const addInfractionCategoryTranslation = (key: string) =>
-        i18next.t(`administration.infraction-category.add.${key}`, { lng: locale });
+        i18next.t(`administration.violation-category.add.${key}`, { lng: locale });
 
       // #region Create Infraction Category Modal
       const createInfractionCategoryModal = new ModalBuilder()
@@ -73,6 +65,7 @@ export const command: SlashCommand = {
         .setLabel(addInfractionCategoryTranslation('modal.emoji-input.label'))
         .setPlaceholder(addInfractionCategoryTranslation('modal.emoji-input.placeholder'))
         .setStyle(TextInputStyle.Short)
+        .setMaxLength(1)
         .setRequired(true);
 
       const codeRow = new ActionRowBuilder<TextInputBuilder>().addComponents(codeInput);

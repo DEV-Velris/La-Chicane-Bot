@@ -8,6 +8,7 @@ import { PrismaClient } from '../generated/prisma';
 import './schedulers/pitSkillRolesChecker';
 import { PitSkillRegistration } from './types/pitSkillRegistration';
 import { loadViolations } from './utils';
+import { loadViolationCategories } from './utils/violationUtil';
 
 configDotenv({
   path: '../.env.production',
@@ -67,8 +68,9 @@ export const pendingPitSkillRegistrations: Map<string, PitSkillRegistration> = n
   // Initialize i18n for translations
   await initI18n();
 
-  // Initialize Violation Reasons List
+  // Initialize Violations
   await loadViolations();
+  await loadViolationCategories();
 
   // Load all event
   discordClient.setMaxListeners(20);

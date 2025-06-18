@@ -1,6 +1,6 @@
-export type ViolationOption = {
+export type ViolationCategoryOption = {
   code: string;
-  description: {
+  meaning: {
     french: string;
     english: string;
   };

@@ -98,6 +98,38 @@
     "category-not-found": "The report ticket category was not found. Please contact the staff."
   },
   "errors": {
-    "no-discord-linked-account": "You doesn't have a linked Discord account."
+    "no-discord-linked-account": "You doesn't have a linked Discord account.",
+    "general-error": "An error occurred. Please try again later. If the problem persists, contact the staff."
+  },
+  "administration": {
+    "violation-category": {
+      "add": {
+        "modal": {
+          "title": "Create a new violation category",
+          "code-input": {
+            "label": "Code of the category (in numbers)",
+            "placeholder": "Example: 0"
+          },
+          "french-meaning-input": {
+            "label": "Meaning of the category (in French)",
+            "placeholder": "Example: Comportement injuste | Gêne mineure"
+          },
+          "english-meaning-input": {
+            "label": "Meaning of the category (in English)",
+            "placeholder": "Example: Unfair behavior | Minor inconvenience"
+          },
+          "emoji-input": {
+            "label": "Emoji of the category",
+            "placeholder": "Example: 🔵"
+          }
+        },
+        "errors": {
+          "invalid-code": "The category code must be a number! The one you entered is not valid.",
+          "invalid-field": "The field {{field}} is invalid. Please check your input.",
+          "code-already-exists": "A category with this code already exists. Please choose a different code."
+        },
+        "success": "The violation category `VC.{{code}}` has been successfully created!"
+      }
+    }
   }
 }

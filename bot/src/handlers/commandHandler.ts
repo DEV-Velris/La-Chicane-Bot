@@ -5,7 +5,11 @@ import { Client, REST, Routes, Snowflake } from 'discord.js';
 import { readdirSync, Stats, statSync } from 'fs';
 import { join } from 'path';
 
-const registerCommands = async (client: Client, commandsDir: string): Promise<void> => {
+const registerCommands = async (
+  client: Client,
+  commandsDir: string,
+  targetDirOrFile?: string,
+): Promise<void> => {
   const body: any = [];
 
   const readCommands = (dir: string): void => {
@@ -14,6 +18,8 @@ const registerCommands = async (client: Client, commandsDir: string): Promise<vo
     for (const file of files) {
       const filePath: string = join(dir, file);
       const stat: Stats = statSync(filePath);
+
+      if (targetDirOrFile && !filePath.includes(targetDirOrFile)) continue;
 
       if (stat.isDirectory()) {
         readCommands(filePath);
