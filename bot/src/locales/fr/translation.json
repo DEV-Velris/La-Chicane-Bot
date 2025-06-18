@@ -99,5 +99,30 @@
   },
   "errors": {
     "no-discord-linked-account": "Vous n'avez pas de compte Discord lié."
+  },
+  "administration": {
+    "infraction-category": {
+      "add": {
+        "modal": {
+          "title": "Créer une nouvelle catégorie d'infraction",
+          "code-input": {
+            "label": "Code de la catégorie",
+            "placeholder": "Exemple: 0"
+          },
+          "french-meaning-input": {
+            "label": "Signification de la catégorie",
+            "placeholder": "Exemple: Comportement injuste | Gêne mineure"
+          },
+          "english-meaning-input": {
+            "label": "Meaning of the category",
+            "placeholder": "Example: Unfair behavior | Minor inconvenience"
+          },
+          "emoji-input": {
+            "label": "Emoji de la catégorie",
+            "placeholder": "Exemple: 🔵"
+          }
+        }
+      }
+    }
   }
 }

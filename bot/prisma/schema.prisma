@@ -14,11 +14,99 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+// This enum represents the language codes supported in the translatable strings.
+enum LanguageCode {
+  FR
+  EN
+}
+
+// This model represents a translation of a translatable string in a specific language.
+model Translation {
+  id                   Int          @id @default(autoincrement()) @db.Integer
+  language             LanguageCode
+  value                String       @db.Text
+  createdAt            DateTime     @default(now())
+  updatedAt            DateTime     @updatedAt
+  translatableStringId Int
+
+  translatableString TranslatableString @relation(fields: [translatableStringId], references: [id])
+}
+
+// This model represents a translatable string in the system.
+model TranslatableString {
+  id Int @id @default(autoincrement()) @db.Integer
+
+  translations        Translation[]
+  violationCategories ViolationCategory[]
+  violations          Violation[]
+}
+
+// This model represents a User in the system.
 model User {
-  id         Int    @id @default(autoincrement()) @db.Integer
-  discordId  String @unique @db.VarChar(50)
-  pitSkillId Int?   @unique
+  id         Int      @id @default(autoincrement()) @db.Integer
+  discordId  String   @unique @db.VarChar(50)
+  pitSkillId Int?     @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  Report Report[]
 
   @@index([discordId], name: "idx_user_discord_id")
   @@index([pitSkillId], name: "idx_user_pit_skill_id")
+  @@index([createdAt], name: "idx_user_created_at")
+  @@index([updatedAt], name: "idx_user_updated_at")
+}
+
+// This model represents a category of report reasons.
+model ViolationCategory {
+  id        Int       @id @default(autoincrement()) @db.Integer
+  code      Int       @unique
+  meaningId Int
+  emoji     String    @db.VarChar(10)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
+
+  meaning      TranslatableString @relation(fields: [meaningId], references: [id])
+  ReportReason Violation[]
+
+  @@index([code], name: "idx_violation_category_code")
+  @@index([createdAt], name: "idx_violation_category_created_at")
+  @@index([updatedAt], name: "idx_violation_category_updated_at")
+}
+
+// This model represents a report reason.
+model Violation {
+  id            Int       @id @default(autoincrement()) @db.Integer
+  code          Int
+  descriptionId Int
+  categoryId    Int
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  deletedAt     DateTime?
+
+  description TranslatableString @relation(fields: [descriptionId], references: [id])
+  category    ViolationCategory  @relation(fields: [categoryId], references: [id])
+  Report      Report[]
+
+  @@index([code], name: "idx_report_reason_code")
+  @@index([categoryId], name: "idx_violation_category_id")
+  @@index([createdAt], name: "idx_violation_created_at")
+  @@index([updatedAt], name: "idx_violation_updated_at")
+}
+
+// This model represents a report in the system.
+model Report {
+  id           Int       @id @default(autoincrement()) @db.Integer
+  reporterId   Int
+  reportedName String    @db.VarChar(255)
+  explanation  String    @db.Text
+  moderatorId  String?
+  closedAt     DateTime?
+  violationId  Int
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  reporter   User      @relation(fields: [reporterId], references: [id])
+  infraction Violation @relation(fields: [violationId], references: [id])
 }
